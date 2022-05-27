@@ -15,9 +15,12 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
 import static io.github.bonigarcia.wdm.config.DriverManagerType.FIREFOX;
+import static org.awaitility.Awaitility.await;
 
 public class SeleniumWebDriverUtils {
     private static final String XPATH = "xpath";
@@ -374,5 +377,25 @@ public class SeleniumWebDriverUtils {
 
     private void enterSuccessLog(String element, String value) {
         System.out.println(value + " successfully entered into " + element);
+    }
+
+    /* This method runs javascript to check if the page is ready. If it returns false it will wait 2 seconds and do another attempt (pollinterval of 2 secs).
+    It will continue to do this for 90 seconds. If the page is ready it will continue with the test */
+    public void checkPageIsReady() {
+        await().pollInterval(2, TimeUnit.SECONDS).atMost(90, TimeUnit.SECONDS).until(isPageReady());
+    }
+
+    private Callable<Boolean> isPageReady() {
+        return () -> {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+            boolean readyStateOfPage = javascriptExecutor.executeScript("return document.readyState").toString().equals("complete");
+            if (!readyStateOfPage) {
+                System.out.println("The page with title " + driver.getTitle() + " is not ready yet. In 2 seconds another attempt will be made.");
+            }
+            return readyStateOfPage;
+        };
+    }
+    public WebDriver getDriver() {
+        return driver;
     }
 }

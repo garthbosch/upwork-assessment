@@ -38,7 +38,7 @@ public abstract class BaseTest {
         this.searchEngine = searchEngine;
         configMan = FileHelper.readPropertiesFile("src/main/resources/config.properties");
         url = configMan.get(searchEngine);
-        driver.startDriver(url, configMan.get("browserType"));
+        driver.startDriver(url, System.getProperty("browserType") != null ? System.getProperty("browserType") : configMan.get("browserType"));
         driver.clearCookies();
     }
 

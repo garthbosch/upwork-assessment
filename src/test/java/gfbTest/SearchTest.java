@@ -6,6 +6,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class SearchTest extends BaseTest {
@@ -16,6 +18,7 @@ public class SearchTest extends BaseTest {
         //Google search
         uiActions = new UIActions(driver, configMan, "google");
         uiActions.enterTextToSearchAndPressEnter();
+        driver.checkPageIsReady();
         googleResultList = uiActions.getGoogleListOfURLs();
         validateResultList(googleResultList, "google");
 
@@ -23,6 +26,7 @@ public class SearchTest extends BaseTest {
         driver.setURL(configMan.get("bing"));
         uiActions = new UIActions(driver, configMan, "bing");
         uiActions.enterTextToSearchAndPressEnter();
+        driver.checkPageIsReady();
         bingResultList = uiActions.getBingListOfURLs();
         validateResultList(bingResultList, "bing");
     }
@@ -34,13 +38,17 @@ public class SearchTest extends BaseTest {
         System.out.println("------------------------------");
         for (int i = 0; i < resultList.size(); i++) {
             if (resultList.get(i).toString().contains(configMan.get("searchKeyword"))) {
-                softAssert.assertTrue(true);
+                softAssert.assertTrue(true, "SUCCESS");
                 System.out.println(resultList.get(i).getTitle() + " contains the keyword " + configMan.get("searchKeyword"));
+
             } else {
-                softAssert.fail();
+                softAssert.fail("FAIL");
                 System.err.println(resultList.get(i).getTitle() + " does not contain the keyword " + configMan.get("searchKeyword"));
             }
         }
+        uiActions.takeScreenshot(new SimpleDateFormat("ddMMMyyyy_hhmmss").format(new Date()) + "_"
+                + searchEngine + "_" + configMan.get("searchKeyword"));
+
         System.out.println("===============================================");
     }
 
