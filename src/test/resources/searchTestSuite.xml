@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search Test Suite">
+    <test name="Search Test Case" enabled="true">
+        <parameter name="searchEngine" value="google"/>
+        <classes>
+            <class name="gfbTest.SearchTest"></class>
+        </classes>
+    </test>
+</suite>

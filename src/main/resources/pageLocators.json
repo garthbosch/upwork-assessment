@@ -1,0 +1,14 @@
+{
+  "google": [
+    {
+      "elementName": "searchTextBox",
+      "elementIdentifier": "//input[@title='Search']",
+      "elementType": "xpath"
+    },
+    {
+      "elementName": "searchResults",
+      "elementIdentifier": "//div[@id='search']//div[@data-sokoban-container]",
+      "elementType": "xpath"
+    }
+  ]
+}
