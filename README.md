@@ -19,33 +19,33 @@
 ### Framework Architecture
 	Project-Name
         |_src
-		|   |_main
+        |   |_main
         |   |   |_java
-		|   |   |	|_gfb
-		|   |   |	|	|_actions
-		|   |   |	|	|   |_UIActions.java
-		|   |   |	|	|_models
-		|   |   |	|   |   |_BingPageLocators.java
-		|   |   |	|	|   |_GooglePageLocators.java
-		|   |   |	|	|   |_SearchResultsDetails.java
+        |   |   |   |_gfb
+        |   |   |   |   |_actions
+        |   |   |   |   |   |_UIActions.java
+        |   |   |   |   |_models
+        |   |   |   |   |   |_BingPageLocators.java
+        |   |   |   |   |   |_GooglePageLocators.java
+        |   |   |   |   |   |_SearchResultsDetails.java
         |   |   |   |   |   |...
-		|   |   |	|   |_utils
+        |   |   |   |   |_utils
         |   |   |   |   |   |_FileHelper.java
         |   |   |   |   |   |_SeleniumWebDriverUtils.java
         |   |   |   |   |   |...
-		|   |	|_resources
+        |   |   |_resources
         |   |   |   |_config.properties
         |   |   |   |_pageLocators.json
         |   |   |   |...
         |   |_test
-		|	|   |_java
-		|	|   |   |_gfbTest
-		|	|   |   |   |_BaseTest.java
-		|	|	|   |   |_SearchTest.java
-		|	|	|   |   |...
-		|   |   |_resources
-		|	|   |   |_searchTestSuite.xml
-		|	|	|   |...
+        |   |   |_java
+        |   |   |   |_gfbTest
+        |   |   |   |   |_BaseTest.java
+        |   |   |   |   |_SearchTest.java
+        |   |   |   |   |...
+        |   |_resources
+        |   |   |   |_searchTestSuite.xml
+        |   |   |   |...
         |_pom.xml
         |_README.md
 
