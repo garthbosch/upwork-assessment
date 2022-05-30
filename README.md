@@ -50,11 +50,20 @@
         |_README.md
 
 ### Running test
-Go to your project directory from terminal and hit following commands:
-- mvn -e test -Dtest.script=src/test/resources/searchTestSuite.xml -DbrowserType=chrome
+1. Via maven command
+   - Go to your project directory from terminal and hit following commands:
+      - mvn -e test -Dtest.script=src/test/resources/searchTestSuite.xml -DbrowserType=chrome
 
-Note: -Dtest.script is where the testNG xml file is. -DbrowserType is the parameter to run tests on chrome or firefox.
+    Note: -Dtest.script is where the testNG xml file is. -DbrowserType is the parameter to run tests on chrome or firefox.
 
+2. Via IDE
+   - Navigate to the test script in src/test/resources.
+   - Right-click the searchTestSuite.xml file and select to run the test.
+
+### Output
+- A reportingAndImages folder will be created with screenshots.
+- On the console the logs will be outputted. 
+     
 ----
 
 ## Specifications
